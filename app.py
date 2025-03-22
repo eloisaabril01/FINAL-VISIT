@@ -47,7 +47,7 @@ async def visit(session, token, uid, data):
         pass  # Ignore errors
 
 # Send requests at maximum speed
-async def send_requests_concurrently(tokens, uid, num_requests=300):
+async def send_requests_concurrently(tokens, uid, num_requests=50):
     connector = aiohttp.TCPConnector(limit=0)
     async with aiohttp.ClientSession(connector=connector) as session:
         data = bytes.fromhex(encrypt_api(f"08{Encrypt_ID(uid)}1007"))
@@ -63,7 +63,7 @@ def send_visits(uid):
     
     print(f"✅ Available tokens count: {len(tokens)}")  # ✅ Confirm token count
 
-    num_requests = 300
+    num_requests = 50
     asyncio.run(send_requests_concurrently(tokens, uid, num_requests))
 
     return jsonify({"message": f"✅ Sent {num_requests} visitors to UID: {uid} using {len(tokens)} tokens at high speed"}), 200

@@ -6,6 +6,14 @@ import os
 
 app = Flask(__name__)
 
+# Encrypt API function (Placeholder, update logic if needed)
+def encrypt_api(data):
+    return data.encode().hex()
+
+# Encrypt ID function (Placeholder, update logic if needed)
+def Encrypt_ID(uid):
+    return str(uid)  # Modify with actual encryption logic if needed
+
 # Fetch the first 4 valid tokens from ind_tokens.json
 def fetch_tokens():
     try:
@@ -71,3 +79,4 @@ def send_visits(uid):
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
     app.run(host="0.0.0.0", port=port)
+
